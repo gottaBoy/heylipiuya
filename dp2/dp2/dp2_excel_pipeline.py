@@ -47,7 +47,9 @@ class Dp2ExcelPipeline(object):
         for i in range(len(item['shop_name'])):
     		print i
                 shop_name = item['shop_name'][i]
+                shop_class = item['shop_class'][0]
                 shop_city = item['shop_city'][0]
+                shop_zone = item['shop_zone'][0]
                 
                 if(len(item['shop_address_1'])<=i):
                        shop_address_1 = ''
@@ -55,9 +57,14 @@ class Dp2ExcelPipeline(object):
                    shop_address_1 = item['shop_address_1'][i]
 
                 if(len(item['shop_address_2'])<=i):
-                       shop_address_2 = ''
+                    shop_address_2 = ''
                 else:
                    shop_address_2 = item['shop_address_2'][i]
+                
+                if(len(item['shop_star'])<=i):
+                    shop_star = ''
+                else:
+                    shop_star = item['shop_star'][i]
                 #shop_tel
                 if(len(item['com_num'])<=i):
                        com_num = ''
@@ -89,7 +96,7 @@ class Dp2ExcelPipeline(object):
                 else:
                     fu_wu = item['fu_wu'][i]
 
-                line = [shop_name,shop_city,shop_address_1,shop_address_2,com_num,price_avg,tag_name,kou_wei,huan_jing,fu_wu]
+                line = [shop_name,shop_class,shop_city,shop_zone,shop_address_1,shop_address_2,shop_star,com_num,price_avg,tag_name,kou_wei,huan_jing,fu_wu]
                 self.ws.append(line)
         return item
 
@@ -100,11 +107,11 @@ class Dp2ExcelPipeline(object):
         '''
         print 'ExcelPipline info:  items size: %s' % self.count
         # file_name = _generate_filename(spider, file_format='xlsx')
-        file_name = 'dp2.xlsx'
+        file_name = 'dp2_ch30_data.xlsx'
         self.wb.save(file_name)
 
-    def _generate_filename(spider, file_format): 
-        pass
+    # def _generate_filename(spider, file_format): 
+    #     pass
         # self.wb.open(file,) 
         # workbook = xlrd.open_workbook('dp2.xlsx')  
         # self.ws = workbook.sheet_by_name('Sheet1')  

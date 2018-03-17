@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*- 
 import  xdrlib ,sys
 import xlrd
-def open_excel(file= 'file.xls'):
+# def open_excel(file= 'file.xls'):
+def open_excel(file= 'dp2.xlsx'):
     try:
         data = xlrd.open_workbook(file)
+        print 1
+        print data
         return data
     except Exception,e:
         print str(e)
 #根据索引获取Excel表格中的数据   参数:file：Excel文件路径     colnameindex：表头列名所在行的所以  ，by_index：表的索引
-def excel_table_byindex(file= 'file.xls',colnameindex=0,by_index=0):
+def excel_table_byindex(file= 'dp2.xlsx',colnameindex=0,by_index=0):
     data = open_excel(file)
     table = data.sheets()[by_index]
     nrows = table.nrows #行数
@@ -26,7 +29,7 @@ def excel_table_byindex(file= 'file.xls',colnameindex=0,by_index=0):
     return list
 
 #根据名称获取Excel表格中的数据   参数:file：Excel文件路径     colnameindex：表头列名所在行的所以  ，by_name：Sheet1名称
-def excel_table_byname(file= 'file.xls',colnameindex=0,by_name=u'Sheet1'):
+def excel_table_byname(file= 'dp2.xlsx',colnameindex=0,by_name=u'Sheet'):
     data = open_excel(file)
     table = data.sheet_by_name(by_name)
     nrows = table.nrows #行数 
@@ -45,6 +48,7 @@ def main():
    tables = excel_table_byindex()
    for row in tables:
        print row
+       print row["fu_wu"]
 
    tables = excel_table_byname()
    for row in tables:
