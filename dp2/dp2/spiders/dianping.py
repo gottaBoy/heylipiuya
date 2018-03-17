@@ -51,7 +51,7 @@ class DianpingSpider(scrapy.Spider):
         item['shop_address_1'] =  response.xpath('//*[@id="shop-all-list"]/ul/li/div[2]/div[3]/a[2]/span/text()').extract()
         item['shop_address_2'] =  response.xpath('//*[@id="shop-all-list"]/ul/li/div[2]/div[3]/span/text()').extract()
         #shop_tel
-        item['shop_star'] = (response.xpath('//*[@id="shop-all-list"]/ul/li/div[2]/div[2]/span/@title').extract()
+        item['shop_star'] = response.xpath('//*[@id="shop-all-list"]/ul/li/div[2]/div[2]/span/@title').extract()
         item['com_num'] =  response.xpath('//*[@id="shop-all-list"]/ul/li/div[2]/div[2]/a[1]/b/text()').extract()
         item['price_avg'] =  response.xpath('//*[@id="shop-all-list"]/ul/li/div[2]/div[2]/a[2]/b/text()').extract()
         item['tag_name'] =  response.xpath('//*[@id="shop-all-list"]/ul/li/div[2]/div[3]/a[1]/span/text()').extract()
