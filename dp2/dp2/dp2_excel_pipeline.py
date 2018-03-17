@@ -35,7 +35,7 @@ class Dp2ExcelPipeline(object):
         '''
         self.wb = openpyxl.Workbook()
         self.ws = self.wb.active
-        self.ws.append(['shop_name','shop_city','shop_address_1','shop_address_2','com_num','price_avg','tag_name','kou_wei','huan_jing','fu_wu'])
+        self.ws.append(['shop_name','shop_class','shop_city','shop_zone','shop_address_1','shop_address_2','shop_star','com_num','price_avg','tag_name','kou_wei','huan_jing','fu_wu'])
 
     def process_item(self, item, spider):
         '''
